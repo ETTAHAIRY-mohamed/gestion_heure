@@ -23,51 +23,51 @@ var Tasks = [
   Task(
       title: "Morocco",
       logo: "a/morocco.png",
-      url: 'http://worldtimeapi.org/api/timezone/Africa/Casablanca'),
+      url: 'https://worldtimeapi.org/api/timezone/Africa/Casablanca'),
   Task(
       title: "Australia",
       logo: "a/australia.png",
-      url: 'http://worldtimeapi.org/api/timezone/Australia/Sydney'),
+      url: 'https://worldtimeapi.org/api/timezone/Australia/Sydney'),
   Task(
       title: "Canada",
       logo: "a/canada.png",
-      url: 'http://worldtimeapi.org/api/timezone/America/Toronto'),
+      url: 'https://worldtimeapi.org/api/timezone/America/Toronto'),
   Task(
       title: "Egypt",
       logo: "a/egypt.png",
-      url: 'http://worldtimeapi.org/api/timezone/Africa/Cairo'),
+      url: 'https://worldtimeapi.org/api/timezone/Africa/Cairo'),
   Task(
       title: "South Africa",
       logo: "a/sa.png",
-      url: 'http://worldtimeapi.org/api/timezone/Africa/Johannesburg'),
+      url: 'https://worldtimeapi.org/api/timezone/Africa/Johannesburg'),
   Task(
       title: "Tunisia",
       logo: "a/tunisia.png",
-      url: 'http://worldtimeapi.org/api/timezone/Africa/Tunis'),
+      url: 'https://worldtimeapi.org/api/timezone/Africa/Tunis'),
   Task(
       title: "Morocco",
       logo: "a/morocco.png",
-      url: 'http://worldtimeapi.org/api/timezone/Africa/Casablanca'),
+      url: 'https://worldtimeapi.org/api/timezone/Africa/Casablanca'),
   Task(
       title: "Australia",
       logo: "a/australia.png",
-      url: 'http://worldtimeapi.org/api/timezone/Australia/Sydney'),
+      url: 'https://worldtimeapi.org/api/timezone/Australia/Sydney'),
   Task(
       title: "Canada",
       logo: "a/canada.png",
-      url: 'http://worldtimeapi.org/api/timezone/America/Toronto'),
+      url: 'https://worldtimeapi.org/api/timezone/America/Toronto'),
   Task(
       title: "Egypt",
       logo: "a/egypt.png",
-      url: 'http://worldtimeapi.org/api/timezone/Africa/Cairo'),
+      url: 'https://worldtimeapi.org/api/timezone/Africa/Cairo'),
   Task(
       title: "South Africa",
       logo: "a/sa.png",
-      url: 'http://worldtimeapi.org/api/timezone/Africa/Johannesburg'),
+      url: 'https://worldtimeapi.org/api/timezone/Africa/Johannesburg'),
   Task(
       title: "Tunisia",
       logo: "a/tunisia.png",
-      url: 'http://worldtimeapi.org/api/timezone/Africa/Tunis')
+      url: 'https://worldtimeapi.org/api/timezone/Africa/Tunis')
 ];
 
 class _LocationState extends State<Location> {
@@ -90,7 +90,11 @@ class _LocationState extends State<Location> {
                   get: () async {
                 // Call the function to fetch the data for the specific URL
                 await onecountrie.getData(Tasks[i].url);
-                Navigator.pop(context);
+                Navigator.pop(context,{
+                  "time": onecountrie.timeNow,
+                   "zone": onecountrie.timeZone,
+                   "isDay":onecountrie.isDay
+                });
                 // Update UI after fetching the data
                 setState(() {});
               },

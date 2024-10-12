@@ -9,9 +9,11 @@ class Home_page extends StatefulWidget {
 }
 
 class _Home_pageState extends State<Home_page> {
+  Map receivedData={};
+  
   @override
   Widget build(BuildContext context) {
-    Map receivedData = ModalRoute.of(context)!.settings.arguments as Map;
+    receivedData= receivedData.isEmpty? ModalRoute.of(context)!.settings.arguments as Map : receivedData ;
     String  day = receivedData["isDay"]? "day.png": "night.png";
     return Scaffold(
       body: Container(
@@ -32,8 +34,13 @@ class _Home_pageState extends State<Home_page> {
               ElevatedButton.icon(
                 onPressed: () async {
              dynamic result = await Navigator.pushNamed(context, '/location');
+             print(result);
              setState(() {
-               
+               receivedData={
+                "time": result["time"],
+                "zone":result["zone"],
+                "isDay": result["isDay"]
+               };
              });
                 },
                 icon: Icon(
