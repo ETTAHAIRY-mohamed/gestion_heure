@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (context) => const Loading(),
-        "/home": (context) => const Home_page(),
+        "/home": (context) => const HomePage(),
         "/location": (context) => const Location(),
       },
     );

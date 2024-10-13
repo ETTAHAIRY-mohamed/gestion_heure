@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart'; // Use 'as http' to avoid naming conflicts
 
@@ -7,7 +8,7 @@ class Allcountries {
   String timeNow = "";
   String timeZone = "";
   late bool isDay;
-  
+
   // Fetch data for a specific URL
   Future<void> getData(String url) async {
     try {
@@ -22,10 +23,14 @@ class Allcountries {
 
       timeNow = DateFormat('hh:mm a').format(realTime);
       timeZone = receivedData["timezone"];
-      
-      print("Time: $timeNow, Timezone: $timeZone, Daytime: $isDay");
+
+      if (kDebugMode) {
+        print("Time: $timeNow, Timezone: $timeZone, Daytime: $isDay");
+      }
     } catch (e) {
-      print("Error: $e");
+      if (kDebugMode) {
+        print("Error: $e");
+      }
     }
   }
 }
