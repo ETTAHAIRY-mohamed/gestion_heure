@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_heure/commun_pages/demo.dart';
-import 'dart:convert';
 
 import 'package:gestion_heure/commun_pages/getdata.dart';
 
@@ -19,7 +18,7 @@ class Task {
   Task({required this.title, required this.logo, required this.url});
 }
 
-var Tasks = [
+var tasks = [
   Task(
       title: "Morocco",
       logo: "a/morocco.png",
@@ -71,35 +70,35 @@ var Tasks = [
 ];
 
 class _LocationState extends State<Location> {
-  @override
   Allcountries onecountrie = Allcountries();
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 204, 223, 233),
         appBar: AppBar(
-          title: Text("choose location "),
-          backgroundColor: Color.fromARGB(192, 64, 115, 255),
+          title: const Text("choose location "),
+          backgroundColor: const Color.fromARGB(192, 64, 115, 255),
         ),
-        body: ListView(
-          children: [
-            for (int i = 0; i < Tasks.length; i++)
-              Demo(
-                  title: Tasks[i].title,
-                  logo: Tasks[i].logo,
-                  url: Tasks[i].url,
-                  get: () async {
+        body: ListView(children: [
+          for (int i = 0; i < tasks.length; i++)
+            Demo(
+              title: tasks[i].title,
+              logo: tasks[i].logo,
+              url: tasks[i].url,
+              get: () async {
                 // Call the function to fetch the data for the specific URL
-                await onecountrie.getData(Tasks[i].url);
-                Navigator.pop(context,{
-                  "time": onecountrie.timeNow,
-                   "zone": onecountrie.timeZone,
-                   "isDay":onecountrie.isDay
-                });
+                await onecountrie.getData(tasks[i].url);
+                if (context.mounted) {
+                  Navigator.pop(context, {
+                    "time": onecountrie.timeNow,
+                    "zone": onecountrie.timeZone,
+                    "isDay": onecountrie.isDay
+                  });
+                }
                 // Update UI after fetching the data
                 setState(() {});
               },
-              )
-          ]
-        ));
+            )
+        ]));
   }
 }

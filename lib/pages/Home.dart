@@ -1,29 +1,29 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
 
-class Home_page extends StatefulWidget {
-  const Home_page({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<Home_page> createState() => _Home_pageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _Home_pageState extends State<Home_page> {
-  Map receivedData={};
-  
+class _HomePageState extends State<HomePage> {
+  Map receivedData = {};
+
   @override
   Widget build(BuildContext context) {
-    receivedData= receivedData.isEmpty? ModalRoute.of(context)!.settings.arguments as Map : receivedData ;
-    String  day = receivedData["isDay"]? "day.png": "night.png";
+    receivedData = receivedData.isEmpty
+        ? ModalRoute.of(context)!.settings.arguments as Map
+        : receivedData;
+    String day = receivedData["isDay"] ? "day.png" : "night.png";
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          color: Color.fromARGB(153, 3, 0, 0),
-          
+          color: const Color.fromARGB(153, 3, 0, 0),
           image: DecorationImage(
-              
-            image: 
-            AssetImage('a/${day}'), // Assurez-vous que le chemin est correct
+            image:
+                AssetImage('a/$day'), // Assurez-vous que le chemin est correct
             fit: BoxFit.cover, // L'image couvre tout l'écran
           ),
         ),
@@ -33,38 +33,41 @@ class _Home_pageState extends State<Home_page> {
             children: [
               ElevatedButton.icon(
                 onPressed: () async {
-             dynamic result = await Navigator.pushNamed(context, '/location');
-             print(result);
-             setState(() {
-               receivedData={
-                "time": result["time"],
-                "zone":result["zone"],
-                "isDay": result["isDay"]
-               };
-             });
+                  dynamic result =
+                      await Navigator.pushNamed(context, '/location');
+                  if (kDebugMode) {
+                    print(result);
+                  }
+                  setState(() {
+                    receivedData = {
+                      "time": result["time"],
+                      "zone": result["zone"],
+                      "isDay": result["isDay"]
+                    };
+                  });
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.edit_location,
                   color: Color.fromARGB(255, 255, 129, 129),
                   size: 24.0,
                 ),
-                label: Text(
+                label: const Text(
                   "Edit location",
                   style: TextStyle(fontSize: 19, color: Colors.white),
                 ),
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                      Color.fromARGB(146, 119, 101, 225)),
-                  padding: MaterialStateProperty.all(EdgeInsets.all(22)),
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                  backgroundColor: WidgetStateProperty.all(
+                      const Color.fromARGB(146, 119, 101, 225)),
+                  padding: WidgetStateProperty.all(const EdgeInsets.all(22)),
+                  shape: WidgetStateProperty.all(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12))),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 300,
               ),
               Container(
-                color: Color.fromARGB(153, 3, 0, 0),
+                color: const Color.fromARGB(153, 3, 0, 0),
                 width: 350,
                 height: 200,
                 child: Column(
@@ -72,14 +75,14 @@ class _Home_pageState extends State<Home_page> {
                   children: [
                     Text(
                       receivedData["time"],
-                      style: TextStyle(fontSize: 33, color: Colors.white),
+                      style: const TextStyle(fontSize: 33, color: Colors.white),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     Text(
                       receivedData["zone"],
-                      style: TextStyle(fontSize: 33, color: Colors.white),
+                      style: const TextStyle(fontSize: 33, color: Colors.white),
                     ),
                   ],
                 ),

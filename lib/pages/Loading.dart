@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestion_heure/commun_pages/getdata.dart';
-import 'dart:convert';
-import 'package:intl/intl.dart';
 
 class Loading extends StatefulWidget {
   const Loading({super.key});
@@ -22,32 +20,28 @@ class _LoadingState extends State<Loading> {
   }
 
   getDataLoading() async {
-  
-      
-      Allcountries onecountrie = Allcountries();
-         await onecountrie.getData('http://worldtimeapi.org/api/timezone/Africa/Casablanca');
+    Allcountries onecountrie = Allcountries();
+    await onecountrie
+        .getData('http://worldtimeapi.org/api/timezone/Africa/Casablanca');
 
-      // After data is fetched, navigate to '/home'
+    // After data is fetched, navigate to '/home'
+    if (mounted) {
       Navigator.pushReplacementNamed(context, '/home', arguments: {
         "time": onecountrie.timeNow,
         "zone": onecountrie.timeZone,
-        "isDay":onecountrie.isDay
+        "isDay": onecountrie.isDay
       });
-    } 
-  
-
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
-         child: 
-            SpinKitFadingCircle(
-                color: Color.fromARGB(146, 12, 16, 49),
-                size: 160.0,
-              )
-           
-      ),
+          child: SpinKitFadingCircle(
+        color: Color.fromARGB(146, 12, 16, 49),
+        size: 160.0,
+      )),
     );
   }
 }
