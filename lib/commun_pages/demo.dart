@@ -6,14 +6,14 @@ class Demo extends StatelessWidget {
     final String logo;
     final String url;
     Function get;
-    Demo({required this.title,required this.logo,required this.url , required this.get});
+    Demo({super.key, required this.title,required this.logo,required this.url , required this.get});
     
   @override
   Widget build(BuildContext context) {
     return Container(
-          padding: EdgeInsets.all(22),
-          margin: EdgeInsets.all(22),
-          color: Color.fromARGB(123, 7, 7, 255),
+          padding: const EdgeInsets.all(22),
+          margin: const EdgeInsets.all(22),
+          color: const Color.fromARGB(123, 7, 7, 255),
           child: Card(
             child: ListTile(
               leading: CircleAvatar(
@@ -25,7 +25,7 @@ class Demo extends StatelessWidget {
               },
               title: Text(
                 title,
-                style: TextStyle(fontSize: 19, color: Colors.black),
+                style: const TextStyle(fontSize: 19, color: Colors.black),
               ),
             ),
           ),
