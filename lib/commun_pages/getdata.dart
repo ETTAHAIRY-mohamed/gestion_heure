@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart';
-import 'package:intl/intl.dart'; // Use 'as http' to avoid naming conflicts
+import 'package:http/http.dart'; // Use 'as http' to avoid naming conflicts
+import 'package:intl/intl.dart';
 
 class Allcountries {
   String timeNow = "";

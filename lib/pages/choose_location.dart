@@ -36,9 +36,9 @@ var tasks = [
       logo: "a/egypt.png",
       url: 'https://worldtimeapi.org/api/timezone/Africa/Cairo'),
   Task(
-      title: "South Africa",
+      title: "Saoudi Arabia",
       logo: "a/sa.png",
-      url: 'https://worldtimeapi.org/api/timezone/Africa/Johannesburg'),
+      url: 'https://worldtimeapi.org/api/timezone/Asia/Riyadh'),
   Task(
       title: "Tunisia",
       logo: "a/tunisia.png",
@@ -61,7 +61,7 @@ var tasks = [
       url: 'https://worldtimeapi.org/api/timezone/Africa/Cairo'),
   Task(
       title: "South Africa",
-      logo: "a/sa.png",
+      logo: "a/south-africa.png",
       url: 'https://worldtimeapi.org/api/timezone/Africa/Johannesburg'),
   Task(
       title: "Tunisia",
