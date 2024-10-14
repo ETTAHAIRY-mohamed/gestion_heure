@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 color: const Color.fromARGB(153, 3, 0, 0),
-                width: 350,
+                width: 355,
                 height: 200,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
