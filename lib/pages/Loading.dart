@@ -20,16 +20,16 @@ class _LoadingState extends State<Loading> {
   }
 
   getDataLoading() async {
-    Allcountries onecountrie = Allcountries();
-    await onecountrie
+    Allcountries onecountry = Allcountries();
+    await onecountry
         .getData('http://worldtimeapi.org/api/timezone/Africa/Casablanca');
 
     // After data is fetched, navigate to '/home'
     if (mounted) {
       Navigator.pushReplacementNamed(context, '/home', arguments: {
-        "time": onecountrie.timeNow,
-        "zone": onecountrie.timeZone,
-        "isDay": onecountrie.isDay
+        "time": onecountry.timeNow,
+        "zone": onecountry.timeZone,
+        "isDay": onecountry.isDay
       });
     }
   }

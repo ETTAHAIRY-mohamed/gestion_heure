@@ -70,7 +70,7 @@ var tasks = [
 ];
 
 class _LocationState extends State<Location> {
-  Allcountries onecountrie = Allcountries();
+  Allcountries onecountry = Allcountries();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,12 +87,12 @@ class _LocationState extends State<Location> {
               url: tasks[i].url,
               get: () async {
                 // Call the function to fetch the data for the specific URL
-                await onecountrie.getData(tasks[i].url);
+                await onecountry.getData(tasks[i].url);
                 if (context.mounted) {
                   Navigator.pop(context, {
-                    "time": onecountrie.timeNow,
-                    "zone": onecountrie.timeZone,
-                    "isDay": onecountrie.isDay
+                    "time": onecountry.timeNow,
+                    "zone": onecountry.timeZone,
+                    "isDay": onecountry.isDay
                   });
                 }
                 // Update UI after fetching the data
