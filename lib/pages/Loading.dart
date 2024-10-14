@@ -15,6 +15,7 @@ class _LoadingState extends State<Loading> {
   String timeNow = '';
   String timeZone = '';
 
+
   @override
   void initState() {
     super.initState();
@@ -25,7 +26,7 @@ class _LoadingState extends State<Loading> {
   
       
       Allcountries onecountrie = Allcountries();
-         await onecountrie.getData('http://worldtimeapi.org/api/timezone/Africa/Casablanca');
+         await onecountrie.getData('https://worldtimeapi.org/api/timezone/Africa/Casablanca');
 
       // After data is fetched, navigate to '/home'
       Navigator.pushReplacementNamed(context, '/home', arguments: {
