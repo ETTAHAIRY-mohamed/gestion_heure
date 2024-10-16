@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_heure/data_search.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,18 +34,19 @@ class _HomePageState extends State<HomePage> {
             children: [
               ElevatedButton.icon(
                 onPressed: () async {
-                  dynamic result =
-                      await Navigator.pushNamed(context, '/location');
-                  if (kDebugMode) {
-                    print(result);
-                  }
-                  setState(() {
-                    receivedData = {
-                      "time": result["time"],
-                      "zone": result["zone"],
-                      "isDay": result["isDay"]
-                    };
-                  });
+                  // dynamic result =
+                  //     await Navigator.pushNamed(context, '/location');
+                  // if (kDebugMode) {
+                  //   print(result);
+                  // }
+                  // setState(() {
+                  //   receivedData = {
+                  //     "time": result["time"],
+                  //     "zone": result["zone"],
+                  //     "isDay": result["isDay"]
+                  //   };
+                  // });
+                  showSearch(context: context, delegate: DataSearch());
                 },
                 icon: const Icon(
                   Icons.edit_location,
