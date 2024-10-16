@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 class Allcountries {
   String timeNow = "";
   String timeZone = "";
-  late bool isDay;
+   bool isDay=false;
 
   // Fetch data for a specific URL
   Future<void> getData(String url) async {

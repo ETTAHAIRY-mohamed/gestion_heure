@@ -23,8 +23,8 @@ class _LoadingState extends State<Loading> {
   getDataLoading() async {
   
       
-      Allcountries onecountrie = Allcountries();
-         await onecountrie.getData('http://worldtimeapi.org/api/timezone/Africa/Casablanca');
+      Allcountries onecountry = Allcountries();
+         await onecountry.getData('http://worldtimeapi.org/api/timezone/Africa/Casablanca');
 
     // After data is fetched, navigate to '/home'
     if (mounted) {
@@ -34,7 +34,7 @@ class _LoadingState extends State<Loading> {
         "isDay": onecountry.isDay
       });
     } 
-  
+  }
 
 
   @override
